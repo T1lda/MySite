@@ -1,0 +1,24 @@
+{% extends "app/layout.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h2>Полезные ресурсы</h2>
+    <div class="resource-links">
+        <!-- Пример ресурса 1 -->
+        <a href="https://example.com/resource1" target="_blank" class="resource-link">
+            <img src="{% static 'app/content/logo1.png' %}" alt="Логотип ресурса 1" class="resource-logo">
+        </a>
+
+        <!-- Пример ресурса 2 -->
+        <a href="https://example.com/resource2" target="_blank" class="resource-link">
+            <img src="{% static 'app/content/logo2.png' %}" alt="Логотип ресурса 2" class="resource-logo">
+        </a>
+
+        <!-- Пример ресурса 3 -->
+        <a href="https://example.com/resource3" target="_blank" class="resource-link">
+            <img src="{% static 'app/content/logo3.png' %}" alt="Логотип ресурса 3" class="resource-logo">
+        </a>
+    </div>
+</div>
+{% endblock %}

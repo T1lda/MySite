@@ -1,0 +1,60 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+<div class="blog-post">
+    {% if post.image %}
+    <img src="{{ post.image.url }}" alt="Изображение статьи" class="img-fluid mb-3">
+    {% endif %}
+    <h2>{{ post.title }}</h2>
+    <p class="text-muted">{{ post.posted }}</p>
+    <p>{{ post.full_content|linebreaksbr }}</p>
+    <a href="{% url 'blog_list' %}" class="btn btn-secondary">Назад</a>
+</div>
+
+<hr>
+
+<!-- Блок комментариев -->
+<div class="comments-section">
+    <h3>Комментарии ({{ comments.count }})</h3>
+
+    {% if user.is_authenticated %}
+    <h4>Добавить комментарий</h4>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Отправить</button>
+    </form>
+    {% else %}
+    <div class="alert alert-info">
+        Чтобы оставить комментарий, <a href="{% url 'login' %}">войдите</a>.
+    </div>
+    {% endif %}
+
+    {% for comment in comments %}
+    <div class="comment">
+        <div class="comment-header">
+            <strong>{{ comment.author }}</strong>
+            <small class="text-muted">{{ comment.date }}</small>
+        </div>
+        <p>{{ comment.text|linebreaksbr }}</p>
+    </div>
+    {% endfor %}
+
+
+
+    <div class="blog-post">
+        {% if post.image %}
+        <img src="{{ post.image.url }}" alt="Изображение статьи" class="img-fluid mb-3">
+        {% endif %}
+        <h2>{{ post.title }}</h2>
+        <p class="text-muted">
+            Опубликовано: {{ post.posted }} |
+            Автор: {% if post.author %}{{ post.author.username }}{% else %}Администратор{% endif %}
+        </p>
+        <p>{{ post.full_content|linebreaksbr }}</p>
+        <a href="{% url 'blog_list' %}" class="btn btn-secondary">Назад</a>
+    </div>
+<hr>
+
+</div>
+{% endblock %}

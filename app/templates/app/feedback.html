@@ -1,0 +1,49 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+<h2>Обратная связь</h2>
+    {% if form %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" id="submit_button">Отправить</button>
+</form>
+    {% else %}
+<div class="alert alert-success">
+    <h3>Спасибо за ваш отзыв!</h3>
+    <p>Ваши данные:</p>
+    <ul>
+        <li>Имя: {{ data.name }}</li>
+        <li>Оценка сайта: {{ data.rating }}</li>
+        <li>Пожелания: {{ data.feedback }}</li>
+        <!-- Добавьте другие поля -->
+    </ul>
+</div>
+    {% endif %}
+{% endblock %}
+{% block scripts %}
+<script>
+    // Изменение цвета текста кнопки при наведении
+    $(document).ready(function() {
+        // Обработчики для кнопки отправки
+        $('#submit_button').on({
+            mouseover: function() {
+                $(this).css('color', '#ff0000'); // Красный при наведении
+            },
+            mouseout: function() {
+                $(this).css('color', ''); // Возврат к исходному цвету
+            }
+        });
+
+        // Обработчики для полей ввода
+        $('input, textarea').on({
+            focus: function() {
+                $(this).css('background-color', '#ffffcc'); // Желтый фон при фокусе
+            },
+            blur: function() {
+                $(this).css('background-color', ''); // Возврат к исходному фону
+            }
+        });
+    });
+</script>
+{% endblock %}

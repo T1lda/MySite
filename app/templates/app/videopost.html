@@ -1,0 +1,31 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+<div class="container video-page">
+    <h2>Наши видео</h2>
+
+    <!-- Отладочная информация -->
+
+    <div class="row">
+        <!-- Видео 1 -->
+        <div class="col-md-6">
+            <div class="video-wrapper">
+                <video controls class="video-player">
+                    <source src="{{ MEDIA_URL }}videos/video1.mp4" type="video/mp4">
+                    Ваш браузер не поддерживает воспроизведение видео.
+                </video>
+            </div>
+        </div>
+
+        <!-- Видео 2 -->
+        <div class="col-md-6">
+            <div class="video-wrapper">
+                <video controls class="video-player">
+                    <source src="{{ MEDIA_URL }}videos/video2.mp4" type="video/mp4">
+                    Ваш браузер не поддерживает воспроизведение видео.
+                </video>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
