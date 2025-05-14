@@ -10,7 +10,7 @@ SECRET_KEY = 'xyshq=p_2xk8hl@a&l0cm&t$$)brjai(8)3tr+us60c1-g0lws'
 
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['t1lda26.pythonanywhere.com', '127.0.0.1', 'localhost']
 
 INSTALLED_APPS = [
     'app.apps.AppConfig',
